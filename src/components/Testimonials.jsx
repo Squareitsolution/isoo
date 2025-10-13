@@ -65,7 +65,7 @@ export default function Testimonials() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-16 px-4 sm:px-6 lg:px-8" id="testimonials">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

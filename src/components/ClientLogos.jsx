@@ -23,7 +23,7 @@ export default function TrustedBySection() {
   ];
 
   return (
-    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8" id="certificates">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -58,10 +58,10 @@ export default function TrustedBySection() {
         {/* Divider */}
         <div className="relative mb-16">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-slate-200"></div>
+            <div className="w-full border-t border-black"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-white px-6 text-slate-500 font-medium">
+            <span className="bg-white px-6 text-black font-medium">
               Certifications We Issue
             </span>
           </div>
@@ -106,14 +106,14 @@ export default function TrustedBySection() {
         </div>
 
         {/* CTA */}
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center">
           <p className="text-slate-700 mb-6 text-lg">
             Join the companies that trust us for their ISO certification
           </p>
           <button className="bg-slate-900 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-slate-800 transition-colors duration-300 shadow-lg hover:shadow-xl">
             Become Our Next Success Story
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

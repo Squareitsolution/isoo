@@ -34,14 +34,14 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-16 px-4 sm:px-6  lg:px-8">
+    <section className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-16 px-4 sm:px-6  lg:px-8" id="services">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Our Services
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Comprehensive ISO certification solutions designed to meet your
             organization’s quality, safety, and sustainability goals.
           </p>
@@ -74,9 +74,9 @@ export default function ServicesSection() {
 
         {/* CTA */}
         <div className="mt-16 text-center">
-          <button className="bg-orange-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-orange-500 transition-colors duration-300 shadow-lg hover:shadow-xl">
+          <a href="#contact" className="bg-orange-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-orange-500 transition-colors duration-300 shadow-lg hover:shadow-xl">
             Contact Us for Certification
-          </button>
+          </a>
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section className="bg-gray-50 py-12 sm:py-16 lg:py-20">
+    <section className="bg-gray-50 py-12 sm:py-16 lg:py-20" id="about" >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-12 lg:mb-16">
@@ -114,9 +114,9 @@ export default function AboutSection() {
 
             {/* Optional CTA Button */}
             <div className="mt-8">
-              <button className="bg-blue-900 text-white px-8 py-3 rounded-md hover:bg-blue-800 transition-colors font-semibold shadow-lg hover:shadow-xl">
+              <a href="#contact" className="bg-blue-900 text-white px-8 py-3 rounded-md hover:bg-blue-800 transition-colors font-semibold shadow-lg hover:shadow-xl">
                 Learn More About Us
-              </button>
+              </a>
             </div>
           </div>
         </div>

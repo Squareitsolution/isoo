@@ -65,10 +65,10 @@ export default function HeroSection() {
               </div>
 
               {/* Show More Button */}
-              <button className="w-full bg-white border-2 border-gray-800 text-gray-800 px-6 py-3 rounded-md font-semibold flex items-center justify-center gap-2 hover:bg-gray-800 hover:text-white transition-all duration-300 group">
+              <a href="#certificates" className="w-full bg-white border-2 border-gray-800 text-gray-800 px-6 py-3 rounded-md font-semibold flex items-center justify-center gap-2 hover:bg-gray-800 hover:text-white transition-all duration-300 group">
                 <span>Show More</span>
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-              </button>
+              </a>
             </div>
           </div>
         </div>

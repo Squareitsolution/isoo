@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { Menu, X, Mail, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Process', href: '/process' },
-    { name: 'Certificates', href: '/certificates' },
-    { name: 'Testimonials', href: '/testimonials' },
-    { name: 'Contact', href: '/contact' }
+    { name: 'Home', href: '#' },
+    { name: 'About', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Process', href: '#process' },
+    { name: 'Certificates', href: '#certificates' },
+    { name: 'Testimonials', href: '#testimonials' },
+    { name: 'FAQs', href: '#faqs' },
+    { name: 'Contact', href: '#contact' }
   ];
 
   return (
@@ -65,9 +67,9 @@ export default function Header() {
           </nav>
 
           {/* CTA Button */}
-          <button className="hidden lg:block bg-blue-900 text-white px-6 py-2.5 rounded-md hover:bg-blue-800 transition-colors font-medium">
+          <a href="#contact" className="hidden lg:block bg-blue-900 text-white px-6 py-2.5 rounded-md hover:bg-blue-800 transition-colors font-medium">
             Get Quote
-          </button>
+          </a>
 
           {/* Mobile Menu Button */}
           <button
