@@ -179,25 +179,25 @@ export default function Footer() {
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <a
-                href="#privacy"
+                href="/privacy-policy"
                 className="text-slate-400 hover:text-white transition-colors"
               >
                 Privacy Policy
               </a>
               <span className="text-slate-700">|</span>
               <a
-                href="#terms"
+                href="/terms-and-conditions"
                 className="text-slate-400 hover:text-white transition-colors"
               >
                 Terms of Service
               </a>
-              <span className="text-slate-700">|</span>
+              {/* <span className="text-slate-700">|</span>
               <a
                 href="#cookies"
                 className="text-slate-400 hover:text-white transition-colors"
               >
                 Cookie Policy
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

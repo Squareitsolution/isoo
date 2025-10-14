@@ -1,37 +1,23 @@
 
 import './App.css'
-import AboutSection from './components/AboutSection'
-import ServicesSection from './components/ServicesSection'
-import Header from './components/Header'
-import HeroSection from './components/HeroSection'
-import WhyChooseUs from './components/WhyChooseUs'
-import ProcessSection from './components/ProcessSection'
-import TrustedBySection from './components/ClientLogos'
-import Testimonials from './components/Testimonials'
-import FAQSection from './components/FAQSection'
-import ContactSection from './components/ContactSection'
-import Footer from './components/Footer'
-import FloatingButtons from './components/FloatingButtons'
-import ScrollToTop from './components/ScrollToTop'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './components/Home'
+import PrivacyPolicy from './components/pages/PrivacyPolicy'
+import TermsAndConditions from './components/pages/TermsAndConditions'
 
 
 function App() {
 
   return (
     <>
-      <Header />
-      <HeroSection />
-      <AboutSection />
-      <WhyChooseUs />
-      <ServicesSection />
-      <ProcessSection />
-      <TrustedBySection />
-      <Testimonials />
-      <FAQSection />
-      <ContactSection />
-      <Footer />
-      <FloatingButtons />
-      <ScrollToTop />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home  />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy  />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions  />} />
+      </Routes>
+    </Router>
+      
     </>
   )
 }

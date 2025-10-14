@@ -1,7 +1,7 @@
 import React from 'react';
 import { Building2, Factory, Briefcase, Store, Truck, Globe, ShoppingBag, Laptop } from 'lucide-react';
 
-export default function TrustedBySection() {
+export default function ClientLogos() {
   const clients = [
     { name: 'TechCorp Industries', icon: Building2, description: 'Leading technology solutions provider' },
     { name: 'Global Manufacturing', icon: Factory, description: 'International manufacturing excellence' },
