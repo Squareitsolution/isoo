@@ -11,6 +11,8 @@ import Testimonials from './components/Testimonials'
 import FAQSection from './components/FAQSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
+import FloatingButtons from './components/FloatingButtons'
+import ScrollToTop from './components/ScrollToTop'
 
 
 function App() {
@@ -28,7 +30,8 @@ function App() {
       <FAQSection />
       <ContactSection />
       <Footer />
-      
+      <FloatingButtons />
+      <ScrollToTop />
     </>
   )
 }

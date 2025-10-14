@@ -1,30 +1,41 @@
-import React, { useState } from 'react';
-import { Phone, Mail, MapPin, MessageSquare, Send, Clock, User } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Send,
+  Clock,
+  User,
+} from "lucide-react";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! We will contact you shortly.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    console.log("Form submitted:", formData);
+    alert("Thank you for your inquiry! We will contact you shortly.");
+    setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
   return (
-    <div className="bg-gradient-to-br from-slate-50 to-blue-50 py-16 px-4 sm:px-6 lg:px-8" id="contact">
+    <div
+      className="bg-gradient-to-br from-slate-50 to-blue-50 py-16 px-4 sm:px-6 lg:px-8"
+      id="contact"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -32,7 +43,8 @@ export default function ContactSection() {
             Get In Touch
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Ready to start your ISO certification journey? Contact us today for a free consultation
+            Ready to start your ISO certification journey? Contact us today for
+            a free consultation
           </p>
         </div>
 
@@ -44,7 +56,8 @@ export default function ContactSection() {
                 Contact Information
               </h3>
               <p className="text-slate-600 mb-8">
-                Have questions about ISO certification? Our expert team is here to help you every step of the way.
+                Have questions about ISO certification? Our expert team is here
+                to help you every step of the way.
               </p>
             </div>
 
@@ -56,10 +69,15 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-slate-900 mb-1">Phone</h4>
-                  <a href="tel:+911234567890" className="text-blue-600 hover:text-blue-700">
-                    +91 123 456 7890
+                  <a
+                    href="tel:+919219975790"
+                    className="text-blue-600 hover:text-blue-700"
+                  >
+                    +(91) 9219975790
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">Mon-Sat: 9:00 AM - 6:00 PM</p>
+                  <p className="text-sm text-slate-500 mt-1">
+                    Mon-Sat: 9:00 AM - 6:00 PM
+                  </p>
                 </div>
               </div>
 
@@ -68,16 +86,20 @@ export default function ContactSection() {
                   <MessageSquare className="w-6 h-6 text-green-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 mb-1">WhatsApp</h4>
-                  <a 
-                    href="https://wa.me/911234567890" 
-                    target="_blank" 
+                  <h4 className="font-semibold text-slate-900 mb-1">
+                    WhatsApp
+                  </h4>
+                  <a
+                    href="https://wa.me/+919219975790"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-green-600 hover:text-green-700"
                   >
-                    +91 123 456 7890
+                    +(91) 9219975790
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">Quick response available</p>
+                  <p className="text-sm text-slate-500 mt-1">
+                    Quick response available
+                  </p>
                 </div>
               </div>
 
@@ -87,10 +109,15 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-slate-900 mb-1">Email</h4>
-                  <a href="mailto:info@isocertification.com" className="text-purple-600 hover:text-purple-700">
-                    info@isocertification.com
+                  <a
+                    href="guardianassessment@gmail.com"
+                    className="text-purple-600 hover:text-purple-700"
+                  >
+                    guardianassessment@gmail.com
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">Response within 24 hours</p>
+                  <p className="text-sm text-slate-500 mt-1">
+                    Response within 24 hours
+                  </p>
                 </div>
               </div>
 
@@ -99,11 +126,14 @@ export default function ContactSection() {
                   <MapPin className="w-6 h-6 text-orange-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 mb-1">Office Location</h4>
+                  <h4 className="font-semibold text-slate-900 mb-1">
+                    Office Location
+                  </h4>
                   <p className="text-slate-600">
-                    123 Business Park, Gomti Nagar<br />
-                    Lucknow, Uttar Pradesh 226010<br />
-                    India
+                    
+                  812, B Wing, Samartha Aishwarya, Lokhandwala Rd, Tarapore Gardens, 
+                  <br />
+                  Highland Park, Andheri West, Mumbai, Maharashtra 400053, India
                   </p>
                 </div>
               </div>
@@ -137,7 +167,7 @@ export default function ContactSection() {
             <h3 className="text-2xl font-bold text-slate-900 mb-6">
               Request Certification Now
             </h3>
-            
+
             <div className="space-y-6">
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1">
@@ -206,7 +236,7 @@ export default function ContactSection() {
 
               <button
                 onClick={handleSubmit}
-                className="w-full  bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold text-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group "
+                className="w-full cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold text-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group "
               >
                 <span>Request Certification Now</span>
                 <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -222,7 +252,7 @@ export default function ContactSection() {
           </h3>
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.2243847168735!2d80.95845931504432!3d26.846694983155713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd991f32b16b%3A0x93ccba8909978be7!2sGomti%20Nagar%2C%20Lucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d415858.50443642656!2d72.829277!3d19.146648!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b798aba27971%3A0x7c1a29e6b6f0932b!2sGuardian%20Assessment%20Private%20Limited!5e1!3m2!1sen!2sus!4v1760427521653!5m2!1sen!2sus"
               width="100%"
               height="400"
               style={{ border: 0 }}

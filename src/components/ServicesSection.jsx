@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Award, Leaf, Utensils, ShieldCheck } from 'lucide-react';
 
 export default function ServicesSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
   const services = [
     {
       icon: Award,
@@ -33,11 +36,44 @@ export default function ServicesSection() {
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px',
+      }
+    );
+
+    const currentSection = sectionRef.current;
+    if (currentSection) {
+      observer.observe(currentSection);
+    }
+
+    return () => {
+      if (currentSection) {
+        observer.unobserve(currentSection);
+      }
+    };
+  }, []);
+
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-16 px-4 sm:px-6  lg:px-8" id="services">
+    <section
+      ref={sectionRef}
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-16 px-4 sm:px-6 lg:px-8"
+      id="services"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Our Services
           </h2>
@@ -48,7 +84,11 @@ export default function ServicesSection() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-1000 delay-300 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+          }`}
+        >
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -73,8 +113,15 @@ export default function ServicesSection() {
         </div>
 
         {/* CTA */}
-        <div className="mt-16 text-center">
-          <a href="#contact" className="bg-orange-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-orange-500 transition-colors duration-300 shadow-lg hover:shadow-xl">
+        <div
+          className={`mt-16 text-center transition-all duration-1000 delay-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <a
+            href="#contact"
+            className="bg-orange-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-orange-500 transition-colors duration-300 shadow-lg hover:shadow-xl"
+          >
             Contact Us for Certification
           </a>
         </div>
