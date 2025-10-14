@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import { Menu, X, Mail, Globe } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { useState } from "react";
+import { Menu, X, Mail, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Certificates', href: '#certificates' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'FAQs', href: '#faqs' },
-    { name: 'Contact', href: '#contact' }
+    { name: "Home", href: "#" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Process", href: "#process" },
+    { name: "Certificates", href: "#certificates" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "FAQs", href: "#faqs" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
@@ -22,21 +22,34 @@ export default function Header() {
       {/* Top Bar */}
       <div className="bg-blue-900 text-white py-2 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
-          <a href="mailto:guardianassessment@gmail.com" className="flex items-center gap-2 hover:text-blue-200 transition">
+          <a
+            href="mailto:guardianassessment@gmail.com"
+            className="flex items-center gap-2 hover:text-blue-200 transition"
+          >
             <Mail size={16} />
-            <span className="hidden sm:inline">guardianassessment@gmail.com</span>
+            <span className="hidden sm:inline">
+              guardianassessment@gmail.com
+            </span>
           </a>
-          <div className='flex gap-3'>
-            <a href="https://www.facebook.com/GuardianAssessmentPrivateLimited" target='_blank' >
-            <FaFacebook className='w-5 h-5' />
+          <div className="flex gap-3">
+            <a
+              href="https://www.facebook.com/GuardianAssessmentPrivateLimited"
+              target="_blank"
+            >
+              <FaFacebook className="w-5 h-5" />
             </a>
-            <a href="https://youtu.be/vqukEMC3Lpw?si=VWsmZQTzDGqFCGza" target='_blank' >
-            <FaYoutube className='w-5 h-5' />
+            <a
+              href="https://youtu.be/vqukEMC3Lpw?si=VWsmZQTzDGqFCGza"
+              target="_blank"
+            >
+              <FaYoutube className="w-5 h-5" />
             </a>
-            <a href="https://www.instagram.com/guardianassesmentgapl/" target='_blank' >
-            <FaInstagram className='w-5 h-5' />
+            <a
+              href="https://www.instagram.com/guardianassesmentgapl/"
+              target="_blank"
+            >
+              <FaInstagram className="w-5 h-5" />
             </a>
-          
           </div>
           {/* <div className="flex gap-3">
             <a href="#" className="hover:text-blue-200 transition" aria-label="Youtube">
@@ -58,10 +71,13 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="flex items-center">
-              <Globe className="w-10 h-10 text-blue-900" />
+              {/* <Globe className="w-10 h-10 text-blue-900" /> */}
               <div className="ml-2">
-                <div className="text-2xl font-bold text-blue-900">GLOBAL</div>
-                <div className="text-xs text-gray-600 uppercase tracking-wide">Legit Solutions</div>
+                <img
+                  src="/images/logo.png"
+                  className="w-full h-16 lg:h-18 object-cover"
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -71,7 +87,7 @@ export default function Header() {
             {navLinks.map((link) => (
               <a
                 key={link.name}
-                href={link.href}
+                href={link.href} // href me section ka id
                 className="text-gray-700 hover:text-blue-900 font-medium transition-colors"
               >
                 {link.name}
@@ -80,7 +96,10 @@ export default function Header() {
           </nav>
 
           {/* CTA Button */}
-          <a href="#contact" className="hidden lg:block bg-blue-900 text-white px-6 py-2.5 rounded-md hover:bg-blue-800 transition-colors font-medium">
+          <a
+            href="#contact"
+            className="hidden lg:block bg-blue-900 text-white px-6 py-2.5 rounded-md hover:bg-blue-800 transition-colors font-medium"
+          >
             Get Quote
           </a>
 
@@ -108,7 +127,10 @@ export default function Header() {
                   {link.name}
                 </a>
               ))}
-              <a href='/contact' className="bg-blue-900 text-white px-6 py-2.5 rounded-md hover:bg-blue-800 transition-colors font-medium w-full">
+              <a
+                href="/contact"
+                className="bg-blue-900 text-white px-6 py-2.5 rounded-md hover:bg-blue-800 transition-colors font-medium w-full"
+              >
                 Get Quote
               </a>
             </div>

@@ -17,7 +17,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "#" },
     { name: "About Us", href: "#about" },
     { name: "Our Services", href: "#services" },
     { name: "Contact", href: "#contact" },
@@ -55,7 +55,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="bg-slate-900 text-white" id="home">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -99,7 +99,7 @@ export default function Footer() {
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <a
-                    href={link.href}
+                    href={link.href} // href me section ka id
                     className="text-slate-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                   >
                     <span className="w-1 h-1 bg-blue-500 rounded-full group-hover:w-2 transition-all duration-200"></span>
@@ -155,9 +155,10 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <MapPin className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
-                  
+
                 <span>
-                  812, B Wing, Samartha Aishwarya, Lokhandwala Rd, Tarapore Gardens, 
+                  812, B Wing, Samartha Aishwarya, Lokhandwala Rd, Tarapore
+                  Gardens,
                   <br />
                   Highland Park, Andheri West, Mumbai, Maharashtra 400053, India
                 </span>

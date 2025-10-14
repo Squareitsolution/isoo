@@ -3,14 +3,14 @@ import { Building2, Factory, Briefcase, Store, Truck, Globe, ShoppingBag, Laptop
 
 export default function TrustedBySection() {
   const clients = [
-    { name: 'TechCorp Industries', icon: Building2 },
-    { name: 'Global Manufacturing', icon: Factory },
-    { name: 'Business Solutions Ltd', icon: Briefcase },
-    { name: 'Retail Enterprises', icon: Store },
-    { name: 'Logistics Pro', icon: Truck },
-    { name: 'WorldWide Group', icon: Globe },
-    { name: 'E-Commerce Plus', icon: ShoppingBag },
-    { name: 'Digital Systems', icon: Laptop }
+    { name: 'TechCorp Industries', icon: Building2, description: 'Leading technology solutions provider' },
+    { name: 'Global Manufacturing', icon: Factory, description: 'International manufacturing excellence' },
+    { name: 'Business Solutions Ltd', icon: Briefcase, description: 'Professional business consulting' },
+    { name: 'Retail Enterprises', icon: Store, description: 'Multi-chain retail operations' },
+    { name: 'Logistics Pro', icon: Truck, description: 'Worldwide logistics services' },
+    { name: 'WorldWide Group', icon: Globe, description: 'Global business solutions' },
+    { name: 'E-Commerce Plus', icon: ShoppingBag, description: 'Online marketplace leader' },
+    { name: 'Digital Systems', icon: Laptop, description: 'IT infrastructure solutions' }
   ];
 
   const certifications = [
@@ -43,11 +43,14 @@ export default function TrustedBySection() {
               return (
                 <div
                   key={index}
-                  className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-lg hover:bg-slate-100 transition-all duration-300 hover:shadow-lg group"
+                  className="flex flex-col items-center justify-center p-8 bg-slate-50 rounded-xl hover:bg-slate-100 transition-all duration-300 hover:shadow-xl group"
                 >
-                  <Icon className="w-12 h-12 text-slate-400 group-hover:text-blue-600 transition-colors duration-300 mb-3" strokeWidth={1.5} />
-                  <p className="text-sm font-medium text-slate-600 text-center">
+                  <Icon className="w-16 h-16 text-blue-600 group-hover:text-orange-500 transition-colors duration-300 mb-4" strokeWidth={1.5} />
+                  <h3 className="text-base font-bold text-slate-800 text-center mb-2">
                     {client.name}
+                  </h3>
+                  <p className="text-sm text-slate-600 text-center">
+                    {client.description}
                   </p>
                 </div>
               );
@@ -58,10 +61,10 @@ export default function TrustedBySection() {
         {/* Divider */}
         <div className="relative mb-16">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-black"></div>
+            <div className="w-full border-t border-slate-200"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-white px-6 text-black font-medium">
+            <span className="bg-white px-6 text-slate-500 font-medium">
               Certifications We Issue
             </span>
           </div>
