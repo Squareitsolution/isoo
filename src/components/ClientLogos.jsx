@@ -94,7 +94,7 @@ export default function ClientLogos() {
             <div className="w-full border-t border-slate-200"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-white px-6 text-slate-500 font-medium">
+            <span className="bg-white px-6 text-slate-500 text-2xl font-medium">
               Certifications We Issue
             </span>
           </div>

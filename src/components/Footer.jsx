@@ -61,10 +61,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-2 rounded-lg">
-                <Award className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold">ISO Certify</h3>
+              <img src="/images/logo.png" alt="" />
             </div>
             <p className="text-slate-400 mb-6 leading-relaxed">
               Your trusted partner for ISO certification services. We help
