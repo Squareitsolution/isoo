@@ -2,8 +2,8 @@
 import { ArrowRight, User, Mail, Phone, Building } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { database } from "../firebase"; // ✅ Import Firebase DB
-import { ref, push, set } from "firebase/database"; // ✅ Firebase DB methods
+import { database } from "../firebase";
+import { ref, push, set } from "firebase/database";
 
 export default function HeroSection() {
   const navigate = useNavigate();
@@ -43,25 +43,20 @@ export default function HeroSection() {
       setCurrentSlide((prev) => (prev + 1) % banners.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, );
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      // ✅ Create a new entry in "inquiries" node
       const inquiryRef = push(ref(database, "inquiries"));
       await set(inquiryRef, formData);
-
-      console.log("Form submitted successfully!");
-      navigate("/thanks"); // Redirect user to Thank You page
+      navigate("/thanks");
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Submission failed! Check console for details.");
@@ -72,15 +67,13 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen flex items-center overflow-hidden">
+    <section className="relative h-auto lg:h-[90vh] flex flex-col lg:flex-row items-center overflow-hidden">
       {/* Background images */}
       {banners.map((banner, index) => (
         <div
           key={index}
           className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ${
-            index === currentSlide
-              ? "opacity-100 scale-100"
-              : "opacity-0 scale-105"
+            index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
           }`}
           style={{
             backgroundImage: `linear-gradient(rgba(15,35,65,0.85), rgba(15,35,65,0.85)), url(${banner.image})`,
@@ -88,23 +81,23 @@ export default function HeroSection() {
         />
       ))}
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-10">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-10">
         {/* Left Text */}
-        <div className="text-white">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">
+        <div className="text-white lg:w-1/2 flex flex-col justify-center">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             {banners[currentSlide].title}
           </h1>
-          <h2 className="text-2xl text-yellow-400 mb-6">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl text-yellow-400 mb-4">
             {banners[currentSlide].subtitle}
           </h2>
-          <p className="text-gray-200 text-lg leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-gray-200 leading-relaxed">
             {banners[currentSlide].description}
           </p>
         </div>
 
         {/* Right Form */}
-        <div className="bg-white rounded-lg shadow-2xl p-6 lg:w-[80%] sm:p-8">
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6 text-center">
+        <div className="bg-white rounded-lg shadow-2xl p-6 sm:p-8 lg:w-[40%] w-full">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-6 text-center">
             Fill Form To Get Free Sample
           </h3>
 
