@@ -14,12 +14,42 @@ export default function ClientLogos() {
   ];
 
   const certifications = [
-    { name: 'ISO 9001', standard: 'Quality Management' },
-    { name: 'ISO 14001', standard: 'Environmental' },
-    { name: 'ISO 45001', standard: 'Health & Safety' },
-    { name: 'ISO 27001', standard: 'Information Security' },
-    { name: 'ISO 22000', standard: 'Food Safety' },
-    { name: 'ISO 50001', standard: 'Energy Management' }
+    { 
+      name: 'ISO 9001', 
+      standard: 'Quality Management',
+      description: 'Enhance customer satisfaction and demonstrate your commitment to quality management. ',
+      benefits: ['Improved efficiency', 'Better customer satisfaction', 'Market credibility']
+    },
+    { 
+      name: 'ISO 14001', 
+      standard: 'Environmental',
+      description: 'Demonstrate environmental responsibility and reduce your ecological footprint. ',
+      benefits: ['Reduced waste', 'Energy efficiency', 'Regulatory compliance']
+    },
+    { 
+      name: 'ISO 45001', 
+      standard: 'Health & Safety',
+      description: 'Protect your workforce and create a safe working environment. ',
+      benefits: ['Reduced incidents', 'Legal compliance', 'Improved morale']
+    },
+    { 
+      name: 'ISO 27001', 
+      standard: 'Information Security',
+      description: 'Safeguard sensitive information and manage security risks effectively. ',
+      benefits: ['Data protection', 'Risk management', 'Client trust']
+    },
+    { 
+      name: 'ISO 22000', 
+      standard: 'Food Safety',
+      description: 'Ensure food safety throughout the supply chain. ISO 22000 combines HACCP principles.',
+      benefits: ['Consumer safety', 'Brand protection', 'Market access']
+    },
+    { 
+      name: 'ISO 50001', 
+      standard: 'Energy Management',
+      description: 'Optimize energy use and reduce costs. ISO 50001 helps organizations improve energy performance.',
+      benefits: ['Cost savings', 'Carbon reduction', 'Sustainability goals']
+    }
   ];
 
   return (
@@ -49,7 +79,7 @@ export default function ClientLogos() {
                   <h3 className="text-base font-bold text-slate-800 text-center mb-2">
                     {client.name}
                   </h3>
-                  <p className="text-sm text-slate-600 text-center">
+                  <p id="badges" className="text-sm text-slate-600 text-center">
                     {client.description}
                   </p>
                 </div>
@@ -70,22 +100,54 @@ export default function ClientLogos() {
           </div>
         </div>
 
-        {/* Certification Badges */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        {/* Certification Flip Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 mb-16">
           {certifications.map((cert, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-blue-100"
-            >
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-md">
-                <span className="text-2xl font-bold text-blue-600">ISO</span>
+            <div key={index} className="flip-card h-56">
+              <div className="flip-card-inner">
+                {/* Front Side */}
+                <div className="flip-card-front bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border border-blue-100 shadow-lg">
+                  <div className="flex flex-col items-center justify-center h-full p-4">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-md">
+                      <span className="text-2xl font-bold text-blue-600">ISO</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-1">
+                      {cert.name}
+                    </h3>
+                    <p className="text-xs text-slate-600 text-center">
+                      {cert.standard}
+                    </p>
+                    <p className="text-xs text-blue-600 mt-2 font-medium">
+                      Hover to learn more
+                    </p>
+                  </div>
+                </div>
+
+                {/* Back Side */}
+                <div className="flip-card-back bg-gradient-to-br from-blue-600 to-purple-700 rounded-xl shadow-xl">
+                  <div className="flex flex-col justify-between h-full p-4 text-white">
+                    <div>
+                      <h3 className="text-sm font-bold mb-2">
+                        {cert.name}
+                      </h3>
+                      <p className="text-xs mb-3 leading-relaxed opacity-90">
+                        {cert.description}
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1 text-xs">Benefits:</h4>
+                      <ul className="space-y-1">
+                        {cert.benefits.map((benefit, idx) => (
+                          <li key={idx} className="text-xs flex items-center gap-1">
+                            <span className="w-1 h-1 bg-yellow-400 rounded-full flex-shrink-0"></span>
+                            {benefit}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-1">
-                {cert.name}
-              </h3>
-              <p className="text-xs text-slate-600 text-center">
-                {cert.standard}
-              </p>
             </div>
           ))}
         </div>
@@ -107,17 +169,55 @@ export default function ClientLogos() {
             </div>
           </div>
         </div>
-
-        {/* CTA */}
-        {/* <div className="mt-16 text-center">
-          <p className="text-slate-700 mb-6 text-lg">
-            Join the companies that trust us for their ISO certification
-          </p>
-          <button className="bg-slate-900 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-slate-800 transition-colors duration-300 shadow-lg hover:shadow-xl">
-            Become Our Next Success Story
-          </button>
-        </div> */}
       </div>
+
+      {/* CSS for Flip Animation */}
+      <style jsx>{`
+        .flip-card {
+          perspective: 1000px;
+          cursor: pointer;
+        }
+
+        .flip-card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transition: transform 0.6s;
+          transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+          transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .flip-card-back {
+          transform: rotateY(180deg);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        @media (max-width: 640px) {
+          .flip-card {
+            height: 240px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

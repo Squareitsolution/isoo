@@ -25,11 +25,11 @@ export default function Footer() {
   ];
 
   const services = [
-    { name: "ISO 9001", href: "#iso9001" },
-    { name: "ISO 14001", href: "#iso14001" },
-    { name: "ISO 22000", href: "#iso22000" },
-    { name: "ISO 45001", href: "#iso45001" },
-    { name: "ISO 27001", href: "#iso27001" },
+    { name: "ISO 9001", href: "#badges" },
+    { name: "ISO 14001", href: "#badges" },
+    { name: "ISO 22000", href: "#badges" },
+    { name: "ISO 45001", href: "#badges" },
+    { name: "ISO 27001", href: "#badges" },
   ];
 
   const socialLinks = [
