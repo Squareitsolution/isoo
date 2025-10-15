@@ -1,3 +1,4 @@
+// ContactSection.jsx
 import React, { useState } from "react";
 import {
   Phone,
@@ -5,9 +6,11 @@ import {
   MapPin,
   MessageSquare,
   Send,
-  Clock,
   User,
 } from "lucide-react";
+import { database } from "../firebase"; // ✅ Firebase DB
+import { ref, push, set } from "firebase/database"; // ✅ Firebase DB methods
+import { useNavigate } from "react-router-dom";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -16,6 +19,9 @@ export default function ContactSection() {
     phone: "",
     message: "",
   });
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -24,11 +30,27 @@ export default function ContactSection() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for your inquiry! We will contact you shortly.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setLoading(true);
+
+    try {
+      // ✅ Create a new entry in "contactInquiries" node
+      const inquiryRef = push(ref(database, "contactInquiries"));
+      await set(inquiryRef, {
+        ...formData,
+        timestamp: new Date().toISOString(), // optional timestamp
+      });
+
+      // alert("Thank you for your inquiry! We will contact you shortly.");
+      navigate("/thanks")
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Submission failed! Please try again later.");
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -63,6 +85,7 @@ export default function ContactSection() {
 
             {/* Contact Cards */}
             <div className="space-y-4">
+              {/* Phone */}
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                 <div className="bg-blue-100 p-3 rounded-lg flex-shrink-0">
                   <Phone className="w-6 h-6 text-blue-600" />
@@ -81,14 +104,13 @@ export default function ContactSection() {
                 </div>
               </div>
 
+              {/* WhatsApp */}
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                 <div className="bg-green-100 p-3 rounded-lg flex-shrink-0">
                   <MessageSquare className="w-6 h-6 text-green-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 mb-1">
-                    WhatsApp
-                  </h4>
+                  <h4 className="font-semibold text-slate-900 mb-1">WhatsApp</h4>
                   <a
                     href="https://wa.me/+919219975790"
                     target="_blank"
@@ -97,12 +119,11 @@ export default function ContactSection() {
                   >
                     +(91) 9219975790
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">
-                    Quick response available
-                  </p>
+                  <p className="text-sm text-slate-500 mt-1">Quick response available</p>
                 </div>
               </div>
 
+              {/* Email */}
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                 <div className="bg-purple-100 p-3 rounded-lg flex-shrink-0">
                   <Mail className="w-6 h-6 text-purple-600" />
@@ -110,56 +131,30 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-semibold text-slate-900 mb-1">Email</h4>
                   <a
-                    href="guardianassessment@gmail.com"
+                    href="mailto:guardianassessment@gmail.com"
                     className="text-purple-600 hover:text-purple-700"
                   >
                     guardianassessment@gmail.com
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">
-                    Response within 24 hours
-                  </p>
+                  <p className="text-sm text-slate-500 mt-1">Response within 24 hours</p>
                 </div>
               </div>
 
+              {/* Office Location */}
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                 <div className="bg-orange-100 p-3 rounded-lg flex-shrink-0">
                   <MapPin className="w-6 h-6 text-orange-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 mb-1">
-                    Office Location
-                  </h4>
+                  <h4 className="font-semibold text-slate-900 mb-1">Office Location</h4>
                   <p className="text-slate-600">
-                    
-                  812, B Wing, Samartha Aishwarya, Lokhandwala Rd, Tarapore Gardens, 
-                  <br />
-                  Highland Park, Andheri West, Mumbai, Maharashtra 400053, India
+                    812, B Wing, Samartha Aishwarya, Lokhandwala Rd, Tarapore Gardens, 
+                    <br />
+                    Highland Park, Andheri West, Mumbai, Maharashtra 400053, India
                   </p>
                 </div>
               </div>
             </div>
-
-            {/* Business Hours */}
-            {/* <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 text-white">
-              <div className="flex items-center gap-3 mb-3">
-                <Clock className="w-6 h-6" />
-                <h4 className="font-semibold text-lg">Business Hours</h4>
-              </div>
-              <div className="space-y-2 text-blue-100">
-                <div className="flex justify-between">
-                  <span>Monday - Friday:</span>
-                  <span className="font-medium text-white">9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday:</span>
-                  <span className="font-medium text-white">10:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday:</span>
-                  <span className="font-medium text-white">Closed</span>
-                </div>
-              </div>
-            </div> */}
           </div>
 
           {/* Contact Form */}
@@ -168,7 +163,8 @@ export default function ContactSection() {
               Request Certification Now
             </h3>
 
-            <div className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Name */}
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Full Name *
@@ -180,12 +176,14 @@ export default function ContactSection() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    required
                     className="w-full pl-12 pr-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
                     placeholder="Enter your full name"
                   />
                 </div>
               </div>
 
+              {/* Email */}
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Email Address *
@@ -197,12 +195,14 @@ export default function ContactSection() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    required
                     className="w-full pl-12 pr-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
                     placeholder="your.email@example.com"
                   />
                 </div>
               </div>
 
+              {/* Phone */}
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Phone Number *
@@ -214,12 +214,14 @@ export default function ContactSection() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    required
                     className="w-full pl-12 pr-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
                     placeholder="+91 XXX XXX XXXX"
                   />
                 </div>
               </div>
 
+              {/* Message */}
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Message *
@@ -228,6 +230,7 @@ export default function ContactSection() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  required
                   rows={5}
                   className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors resize-none"
                   placeholder="Tell us about your certification requirements..."
@@ -235,13 +238,14 @@ export default function ContactSection() {
               </div>
 
               <button
-                onClick={handleSubmit}
-                className="w-full cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold text-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group "
+                type="submit"
+                disabled={loading}
+                className="w-full cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold text-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group"
               >
-                <span>Request Certification Now</span>
+                <span>{loading ? "Submitting..." : "Request Certification Now"}</span>
                 <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-            </div>
+            </form>
           </div>
         </div>
 
