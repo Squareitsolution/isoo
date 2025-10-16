@@ -48,16 +48,16 @@ export default function HeroSection() {
     },
   ];
 
-  // ✅ Manual Next/Prev
-  const handleNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % banners.length);
-    restartAutoSlide();
-  };
+  // // ✅ Manual Next/Prev
+  // const handleNextSlide = () => {
+  //   setCurrentSlide((prev) => (prev + 1) % banners.length);
+  //   restartAutoSlide();
+  // };
 
-  const handlePrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
-    restartAutoSlide();
-  };
+  // const handlePrevSlide = () => {
+  //   setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
+  //   restartAutoSlide();
+  // };
 
   // ✅ Auto Slide Without useEffect
   const startAutoSlide = () => {
@@ -68,11 +68,11 @@ export default function HeroSection() {
     }
   };
 
-  const restartAutoSlide = () => {
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
-    startAutoSlide();
-  };
+  // const restartAutoSlide = () => {
+  //   clearInterval(intervalRef.current);
+  //   intervalRef.current = null;
+  //   startAutoSlide();
+  // };
 
   // ✅ Start auto-slide once (without useEffect)
   if (!intervalRef.current) startAutoSlide();
@@ -143,7 +143,7 @@ export default function HeroSection() {
         </div>
 
         {/* Right Form */}
-        <div className="bg-white rounded-lg shadow-2xl p-6 sm:p-8 lg:w-[40%] w-full">
+        <div className="bg-white rounded-lg shadow-2xl p-6 sm:p-8 lg:w-[35%] w-full">
           <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-6 text-center">
             Request A Free Quote For ISO Certification
           </h3>
