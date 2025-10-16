@@ -21,7 +21,6 @@ export default function Footer() {
     { name: "About Us", href: "#about" },
     { name: "Our Services", href: "#services" },
     { name: "Contact", href: "#contact" },
-    
   ];
 
   const services = [
@@ -170,9 +169,25 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-400 text-sm text-center md:text-left">
               © {currentYear}{" "}
-              <span className="text-white font-semibold">ISO Certify</span>. All
-              rights reserved.
+              <span className="text-white font-semibold">
+                Guardian Certification{" "}
+              </span>
+              . All rights reserved.
             </p>
+
+            {/* Design By */}
+            <div className="text-blue-200 text-sm text-center">
+              Design by:{" "}
+              <a
+                href="https://www.squareit.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-orange-400 hover:text-purple-500 text-sm underline"
+              >
+                www.squareit.in
+              </a>
+            </div>
+
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <a
                 href="/privacy-policy"
@@ -200,14 +215,14 @@ export default function Footer() {
       </div>
 
       {/* Certification Badge */}
-      <div className="bg-slate-950 py-4">
+      {/* <div className="bg-slate-950 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-slate-500 text-sm">
             Accredited ISO Certification Body | Member of International
             Accreditation Forum (IAF)
           </p>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 }
