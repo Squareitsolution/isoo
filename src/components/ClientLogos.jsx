@@ -146,7 +146,7 @@ export default function ClientLogos() {
                       <h3 className="text-sm font-bold mb-2">
                         {cert.name}
                       </h3>
-                      <p className="text-xs mb-3 leading-relaxed opacity-90">
+                      <p className="text-xs mb-1 leading-relaxed opacity-90">
                         {cert.description}
                       </p>
                     </div>
