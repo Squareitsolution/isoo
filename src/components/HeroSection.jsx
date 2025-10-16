@@ -1,6 +1,6 @@
 // HeroSection.jsx
 import { ArrowRight, User, Mail, Phone, Building } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { database } from "../firebase";
 import { ref, push, set } from "firebase/database";
@@ -17,6 +17,9 @@ export default function HeroSection() {
 
   const [loading, setLoading] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  // ✅ Auto-slide reference
+  const intervalRef = useRef(null);
 
   const banners = [
     {
@@ -35,19 +38,48 @@ export default function HeroSection() {
       description:
         "Transform your business with internationally recognized ISO certification. Our expert team guides you through every step of the process.",
     },
+    {
+      image:
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2069",
+      title: "Grow With International Standards",
+      subtitle: "Get Certified Easily",
+      description:
+        "Our ISO certification process ensures your business meets global quality standards with minimal hassle.",
+    },
   ];
 
-  // Auto slide change
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % banners.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [banners.length]);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  // ✅ Manual Next/Prev
+  const handleNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % banners.length);
+    restartAutoSlide();
   };
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
+    restartAutoSlide();
+  };
+
+  // ✅ Auto Slide Without useEffect
+  const startAutoSlide = () => {
+    if (!intervalRef.current) {
+      intervalRef.current = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % banners.length);
+      }, 5000); // change every 5s
+    }
+  };
+
+  const restartAutoSlide = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+    startAutoSlide();
+  };
+
+  // ✅ Start auto-slide once (without useEffect)
+  if (!intervalRef.current) startAutoSlide();
+
+  // ✅ Form
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,44 +98,48 @@ export default function HeroSection() {
     setFormData({ name: "", email: "", phone: "", company: "" });
   };
 
+  const currentBanner = banners[currentSlide];
+
   return (
     <section className="relative h-auto lg:h-[90vh] flex flex-col lg:flex-row items-center overflow-hidden">
-      {/* ✅ Background images converted to <img> for LCP fix */}
-      {banners.map((banner, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-all duration-1000 ${
-            index === currentSlide
-              ? "opacity-100 scale-100 z-0"
-              : "opacity-0 scale-105 z-0"
-          }`}
-        >
-          {/* LCP image */}
-          <img
-            src={banner.image}
-            alt={banner.title}
-            fetchpriority={index === 0 ? "high" : "auto"}
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-[rgba(15,35,65,0.85)]" />
-        </div>
-      ))}
+      {/* Background image */}
+      <img
+        src={currentBanner.image}
+        alt={currentBanner.title}
+        fetchpriority="high"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out"
+      />
+      <div className="absolute inset-0 bg-[rgba(15,35,65,0.85)]" />
 
-      {/* Main content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-10">
         {/* Left Text */}
         <div className="text-white lg:w-1/2 flex flex-col justify-center">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            {banners[currentSlide].title}
+            {currentBanner.title}
           </h1>
           <h2 className="text-xl sm:text-2xl lg:text-3xl text-yellow-400 mb-4">
-            {banners[currentSlide].subtitle}
+            {currentBanner.subtitle}
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-gray-200 leading-relaxed">
-            {banners[currentSlide].description}
+            {currentBanner.description}
           </p>
+
+          {/* Controls */}
+          {/* <div className="flex gap-3 mt-6">
+            <button
+              onClick={handlePrevSlide}
+              className="px-4 py-2 bg-yellow-500 text-blue-900 font-semibold rounded-md hover:bg-yellow-400 transition-all duration-300"
+            >
+              Previous
+            </button>
+            <button
+              onClick={handleNextSlide}
+              className="px-4 py-2 bg-yellow-500 text-blue-900 font-semibold rounded-md hover:bg-yellow-400 transition-all duration-300 flex items-center gap-2"
+            >
+              <ArrowRight size={18} />
+            </button>
+          </div> */}
         </div>
 
         {/* Right Form */}
@@ -115,10 +151,7 @@ export default function HeroSection() {
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Name */}
             <div className="relative">
-              <User
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                size={20}
-              />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
                 type="text"
                 name="name"
@@ -132,10 +165,7 @@ export default function HeroSection() {
 
             {/* Email */}
             <div className="relative">
-              <Mail
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                size={20}
-              />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
                 type="email"
                 name="email"
@@ -149,10 +179,7 @@ export default function HeroSection() {
 
             {/* Phone */}
             <div className="relative">
-              <Phone
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                size={20}
-              />
+              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
                 type="tel"
                 name="phone"
@@ -166,10 +193,7 @@ export default function HeroSection() {
 
             {/* Company */}
             <div className="relative">
-              <Building
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                size={20}
-              />
+              <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
                 type="text"
                 name="company"
@@ -181,7 +205,6 @@ export default function HeroSection() {
               />
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={loading}
