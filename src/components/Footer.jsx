@@ -57,9 +57,9 @@ export default function Footer() {
     <footer className="bg-slate-900 text-white" id="home">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="lg:col-span-1">
+          <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <img src="/images/logo.png" alt="" />
             </div>
@@ -125,7 +125,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <h4 className="text-lg font-bold mb-4">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-slate-400">
