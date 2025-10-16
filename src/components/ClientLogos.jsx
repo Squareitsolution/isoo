@@ -1,5 +1,11 @@
 import React from 'react';
 import { Building2, Factory, Briefcase, Store, Truck, Globe, ShoppingBag, Laptop } from 'lucide-react';
+import ISO9001 from "/images/ISO_9001.jpg"
+import ISO14001 from "/images/ISO-14001.png" 
+import ISO45001 from "/images/45001.jpg" 
+import ISO27001 from "/images/iso27001cert.jpg" 
+import ISO22000 from "/images/iso-22000.png" 
+import ISO50001 from "/images/50001.webp" 
 
 export default function ClientLogos() {
   const clients = [
@@ -16,36 +22,47 @@ export default function ClientLogos() {
   const certifications = [
     { 
       name: 'ISO 9001', 
+      img: ISO9001,
       standard: 'Quality Management',
       description: 'Enhance customer satisfaction and demonstrate your commitment to quality management. ',
       benefits: ['Improved efficiency', 'Better customer satisfaction', 'Market credibility']
     },
     { 
       name: 'ISO 14001', 
+      img: ISO14001,
+
       standard: 'Environmental',
       description: 'Demonstrate environmental responsibility and reduce your ecological footprint. ',
       benefits: ['Reduced waste', 'Energy efficiency', 'Regulatory compliance']
     },
     { 
       name: 'ISO 45001', 
+      img: ISO45001,
+
       standard: 'Health & Safety',
       description: 'Protect your workforce and create a safe working environment. ',
       benefits: ['Reduced incidents', 'Legal compliance', 'Improved morale']
     },
     { 
       name: 'ISO 27001', 
+      img: ISO27001,
+
       standard: 'Information Security',
       description: 'Safeguard sensitive information and manage security risks effectively. ',
       benefits: ['Data protection', 'Risk management', 'Client trust']
     },
     { 
       name: 'ISO 22000', 
+      img: ISO22000,
+
       standard: 'Food Safety',
       description: 'Ensure food safety throughout the supply chain. ISO 22000 combines HACCP principles.',
       benefits: ['Consumer safety', 'Brand protection', 'Market access']
     },
     { 
       name: 'ISO 50001', 
+      img: ISO50001,
+
       standard: 'Energy Management',
       description: 'Optimize energy use and reduce costs. ISO 50001 helps organizations improve energy performance.',
       benefits: ['Cost savings', 'Carbon reduction', 'Sustainability goals']
@@ -108,17 +125,16 @@ export default function ClientLogos() {
                 {/* Front Side */}
                 <div className="flip-card-front bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border border-blue-100 shadow-lg">
                   <div className="flex flex-col items-center justify-center h-full p-4">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-md">
-                      <span className="text-2xl font-bold text-blue-600">ISO</span>
+                    <div className="w-22 h-22 bg-white rounded-full flex items-center justify-center mb-3 shadow-md">
+                      <span className="text-2xl font-bold text-blue-600">
+                        <img src={cert.img} alt="" />
+                      </span>
                     </div>
                     <h3 className="text-lg font-bold text-slate-900 mb-1">
                       {cert.name}
                     </h3>
-                    <p className="text-xs text-slate-600 text-center">
+                    <p className="text-md text-slate-800 text-center">
                       {cert.standard}
-                    </p>
-                    <p className="text-xs text-blue-600 mt-2 font-medium">
-                      Hover to learn more
                     </p>
                   </div>
                 </div>

@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <div ref={sectionRef} className="min-h-screen bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+    <div ref={sectionRef} className="min-h-[80vh] bg-gray-50 py-5 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div
