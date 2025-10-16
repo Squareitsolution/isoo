@@ -30,7 +30,7 @@ export default function HeroSection() {
     {
       image:
         "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071",
-      title: "Get Your Business ISO Certified",
+      title: "ISO Certification Services for Businesses",
       subtitle: "Fast & Reliable Process",
       description:
         "Transform your business with internationally recognized ISO certification. Our expert team guides you through every step of the process.",

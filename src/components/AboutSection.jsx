@@ -80,9 +80,9 @@ export default function AboutSection() {
                 : 'opacity-0 translate-y-20'
             }`}
           >
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-yellow-500 mb-4">
-              Global Legit Solutions
-            </h3>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-yellow-500 mb-4">
+             "Guardian Assessment - Expert ISO Certification Services"
+            </h1>
 
             <p className="text-gray-700 text-base sm:text-lg mb-8 leading-relaxed">
               Globally leading ISO Certification provider, helping businesses
