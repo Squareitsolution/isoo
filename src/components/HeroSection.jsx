@@ -37,13 +37,13 @@ export default function HeroSection() {
     },
   ];
 
-  // Change slides automatically
+  // Auto slide change
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % banners.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, );
+  }, [banners.length]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -68,19 +68,30 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-auto lg:h-[90vh] flex flex-col lg:flex-row items-center overflow-hidden">
-      {/* Background images */}
+      {/* ✅ Background images converted to <img> for LCP fix */}
       {banners.map((banner, index) => (
         <div
           key={index}
-          className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ${
-            index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
+          className={`absolute inset-0 transition-all duration-1000 ${
+            index === currentSlide
+              ? "opacity-100 scale-100 z-0"
+              : "opacity-0 scale-105 z-0"
           }`}
-          style={{
-            backgroundImage: `linear-gradient(rgba(15,35,65,0.85), rgba(15,35,65,0.85)), url(${banner.image})`,
-          }}
-        />
+        >
+          {/* LCP image */}
+          <img
+            src={banner.image}
+            alt={banner.title}
+            fetchpriority={index === 0 ? "high" : "auto"}
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-[rgba(15,35,65,0.85)]" />
+        </div>
       ))}
 
+      {/* Main content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-10">
         {/* Left Text */}
         <div className="text-white lg:w-1/2 flex flex-col justify-center">
