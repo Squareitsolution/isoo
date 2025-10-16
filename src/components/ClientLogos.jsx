@@ -1,11 +1,11 @@
 import React from 'react';
 import { Building2, Factory, Briefcase, Store, Truck, Globe, ShoppingBag, Laptop } from 'lucide-react';
-import ISO9001 from "/images/ISO_9001.jpg"
-import ISO14001 from "/images/ISO-14001.png" 
-import ISO45001 from "/images/45001.jpg" 
-import ISO27001 from "/images/iso27001cert.jpg" 
-import ISO22000 from "/images/iso-22000.png" 
-import ISO50001 from "/images/50001.webp" 
+import ISO9001 from "/images/ISO_9001.avif"
+import ISO14001 from "/images/ISO-14001.avif" 
+import ISO45001 from "/images/45001.avif" 
+import ISO27001 from "/images/iso27001cert.avif" 
+import ISO22000 from "/images/iso-22000.avif" 
+import ISO50001 from "/images/50001.avif" 
 
 export default function ClientLogos() {
   const clients = [

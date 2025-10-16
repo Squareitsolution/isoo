@@ -63,7 +63,7 @@ export default function AboutSection() {
           >
             <div className="relative w-full max-w-lg mx-auto">
               <img
-                src="/images/About2.jpg "
+                src="/images/About2.avif "
                 alt="About Global Legit Solutions"
                 className="w-full h-auto rounded-xl shadow-xl object-cover"
               />

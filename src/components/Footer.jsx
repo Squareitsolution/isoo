@@ -60,7 +60,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <img src="/images/logo.png" alt="" />
+              <img src="/images/logo.avif" alt="" />
             </div>
             <p className="text-slate-400 mb-6 leading-relaxed">
               Your trusted partner for ISO certification services. We help

@@ -74,7 +74,7 @@ export default function Header() {
               {/* <Globe className="w-10 h-10 text-blue-900" /> */}
               <div className="ml-2">
                 <img
-                  src="/images/logo.png"
+                  src="/images/logo.avif"
                   className="w-full h-16 lg:h-18 object-cover"
                   alt=""
                 />
