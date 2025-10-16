@@ -23,7 +23,7 @@ export default function HeroSection() {
       image:
         "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070",
       title: "Apply Online ISO Certification",
-      subtitle: "Globally at Lowest Cost",
+      subtitle: "Guardian Assessment at Lowest Cost",
       description:
         "ISO Certification (International Organization For Standardization Certification) is a globally recognized set of standards that an organization can achieve in various areas of its operations.",
     },
@@ -98,7 +98,7 @@ export default function HeroSection() {
         {/* Right Form */}
         <div className="bg-white rounded-lg shadow-2xl p-6 sm:p-8 lg:w-[40%] w-full">
           <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-6 text-center">
-            Fill Form To Get Free Sample
+            Request A Free Quote For ISO Certification
           </h3>
 
           <form onSubmit={handleSubmit} className="space-y-4">
