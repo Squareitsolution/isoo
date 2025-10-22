@@ -48,17 +48,6 @@ export default function HeroSection() {
     },
   ];
 
-  // // ✅ Manual Next/Prev
-  // const handleNextSlide = () => {
-  //   setCurrentSlide((prev) => (prev + 1) % banners.length);
-  //   restartAutoSlide();
-  // };
-
-  // const handlePrevSlide = () => {
-  //   setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
-  //   restartAutoSlide();
-  // };
-
   // ✅ Auto Slide Without useEffect
   const startAutoSlide = () => {
     if (!intervalRef.current) {
@@ -67,12 +56,6 @@ export default function HeroSection() {
       }, 5000); // change every 5s
     }
   };
-
-  // const restartAutoSlide = () => {
-  //   clearInterval(intervalRef.current);
-  //   intervalRef.current = null;
-  //   startAutoSlide();
-  // };
 
   // ✅ Start auto-slide once (without useEffect)
   if (!intervalRef.current) startAutoSlide();
@@ -124,22 +107,6 @@ export default function HeroSection() {
           <p className="text-sm sm:text-base lg:text-lg text-gray-200 leading-relaxed">
             {currentBanner.description}
           </p>
-
-          {/* Controls */}
-          {/* <div className="flex gap-3 mt-6">
-            <button
-              onClick={handlePrevSlide}
-              className="px-4 py-2 bg-yellow-500 text-blue-900 font-semibold rounded-md hover:bg-yellow-400 transition-all duration-300"
-            >
-              Previous
-            </button>
-            <button
-              onClick={handleNextSlide}
-              className="px-4 py-2 bg-yellow-500 text-blue-900 font-semibold rounded-md hover:bg-yellow-400 transition-all duration-300 flex items-center gap-2"
-            >
-              <ArrowRight size={18} />
-            </button>
-          </div> */}
         </div>
 
         {/* Right Form */}
@@ -185,7 +152,10 @@ export default function HeroSection() {
                 name="phone"
                 required
                 value={formData.phone}
-                onChange={handleChange}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, ""); // allow only numbers
+                  setFormData({ ...formData, phone: value });
+                }}
                 placeholder="Phone*"
                 className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-md focus:border-blue-900"
               />
@@ -200,7 +170,7 @@ export default function HeroSection() {
                 required
                 value={formData.company}
                 onChange={handleChange}
-                placeholder="Company Name*"
+                placeholder="Company Name (optional)"
                 className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-md focus:border-blue-900"
               />
             </div>

@@ -8,8 +8,8 @@ import {
   Send,
   User,
 } from "lucide-react";
-import { database } from "../firebase"; // ✅ Firebase DB
-import { ref, push, set } from "firebase/database"; // ✅ Firebase DB methods
+import { database } from "../firebase";
+import { ref, push, set } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
 export default function ContactSection() {
@@ -19,32 +19,49 @@ export default function ContactSection() {
     phone: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [phoneError, setPhoneError] = useState(""); // ✅ phone validation
   const navigate = useNavigate();
 
-  const [loading, setLoading] = useState(false);
-
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    // Real-time phone validation
+    if (name === "phone") {
+      const phoneRegex = /^[0-9]{0,10}$/; // allow up to 10 digits
+      if (!phoneRegex.test(value)) {
+        setPhoneError("Only numbers allowed (max 10 digits)");
+      } else if (value.length !== 10) {
+        setPhoneError("Phone number must be exactly 10 digits");
+      } else {
+        setPhoneError("");
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Final phone validation
+    if (!/^\d{10}$/.test(formData.phone)) {
+      setPhoneError("Phone number must be exactly 10 digits");
+      alert("❌ Please enter a valid 10-digit phone number");
+      return;
+    }
+
     setLoading(true);
 
     try {
-      // ✅ Create a new entry in "contactInquiries" node
       const inquiryRef = push(ref(database, "contactInquiries"));
       await set(inquiryRef, {
         ...formData,
-        timestamp: new Date().toISOString(), // optional timestamp
+        timestamp: new Date().toISOString(),
       });
 
-      // alert("Thank you for your inquiry! We will contact you shortly.");
-      navigate("/thanks")
+      navigate("/thanks");
       setFormData({ name: "", email: "", phone: "", message: "" });
+      setPhoneError("");
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Submission failed! Please try again later.");
@@ -119,7 +136,9 @@ export default function ContactSection() {
                   >
                     +(91) 9219975790
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">Quick response available</p>
+                  <p className="text-sm text-slate-500 mt-1">
+                    Quick response available
+                  </p>
                 </div>
               </div>
 
@@ -136,7 +155,9 @@ export default function ContactSection() {
                   >
                     guardianassessment@gmail.com
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">Response within 24 hours</p>
+                  <p className="text-sm text-slate-500 mt-1">
+                    Response within 24 hours
+                  </p>
                 </div>
               </div>
 
@@ -215,16 +236,24 @@ export default function ContactSection() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full pl-12 pr-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                    maxLength={10}
+                    className={`w-full pl-12 pr-4 py-3 border-2 rounded-lg focus:outline-none transition-colors ${
+                      phoneError
+                        ? "border-red-500 focus:border-red-500"
+                        : "border-slate-200 focus:border-blue-500"
+                    }`}
                     placeholder="+91 XXX XXX XXXX"
                   />
+                  {phoneError && (
+                    <p className="text-red-500 text-xs mt-1">{phoneError}</p>
+                  )}
                 </div>
               </div>
 
               {/* Message */}
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1">
-                  Message *
+                  Message 
                 </label>
                 <textarea
                   name="message"
