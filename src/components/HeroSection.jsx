@@ -111,7 +111,7 @@ export default function HeroSection() {
 
         {/* Right Form */}
         <div className="bg-white rounded-lg shadow-2xl p-6 sm:p-8 lg:w-[35%] w-full">
-          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-6 text-center">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-900 mb-6 text-center">
             Request A Free Quote For ISO Certification
           </h3>
 
