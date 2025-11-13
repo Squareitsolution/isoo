@@ -42,7 +42,7 @@ export default function HeroSection() {
       image:
         "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2069",
       title: "Grow With International Standards",
-      subtitle: "Get Certified Easily",
+      subtitle: "Get ISO Certified with Confidence",
       description:
         "Our ISO certification process ensures your business meets global quality standards with minimal hassle.",
     },
