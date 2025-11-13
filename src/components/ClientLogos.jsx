@@ -172,16 +172,16 @@ export default function ClientLogos() {
         <div className="mt-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white">
             <div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">500+</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">5000+</div>
               <p className="text-blue-100">Companies Certified</p>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">15+</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">8+</div>
               <p className="text-blue-100">Years Experience</p>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">98%</div>
-              <p className="text-blue-100">Success Rate</p>
+              <div className="text-4xl md:text-5xl font-bold mb-2">100%</div>
+              <p className="text-blue-100">Customer Satisfaction</p>
             </div>
           </div>
         </div>
