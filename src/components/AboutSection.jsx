@@ -7,7 +7,7 @@ export default function AboutSection() {
 
   const benefits = [
     '5 years of Experience In ISO Certification',
-    'Best Service & Lowest Price Guaranteed',
+    'Best Service Guaranteed',
     '100% Money Back Guarantee',
     'Our Certificate valid in Govt. Tender, Nationally & Internationally',
     '100% Secure Customer Privacy & Data Protection System',
