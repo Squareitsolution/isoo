@@ -176,7 +176,7 @@ export default function Footer() {
             </p>
 
             {/* Design By */}
-            <div className="text-blue-200 text-sm text-center lg:block hidden">
+            {/* <div className="text-blue-200 text-sm text-center lg:block hidden">
               Design by:{" "}
               <a
                 href="https://www.squareit.in"
@@ -186,7 +186,7 @@ export default function Footer() {
               >
                 www.squareit.in
               </a>
-            </div>
+            </div> */}
 
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <a
