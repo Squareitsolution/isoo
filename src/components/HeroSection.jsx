@@ -26,7 +26,7 @@ export default function HeroSection() {
       image:
         "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070",
       title: "Apply Online ISO Certification",
-      subtitle: "Guardian Assessment at Trusted Expertise",
+      subtitle: "Guardian Assessment with Trusted Expertise",
       description:
         "ISO Certification (International Organization For Standardization Certification) is a globally recognized set of standards that an organization can achieve in various areas of its operations.",
     },
