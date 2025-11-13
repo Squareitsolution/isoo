@@ -133,7 +133,7 @@ export default function TermsAndConditions() {
                 guardianassessment@gmail.com
               </a>
             </p>
-            <p>
+            {/* <p>
               <strong className="text-blue-800">Phone:</strong>{" "}
               <a
                 href="tel:+919820434389"
@@ -141,7 +141,7 @@ export default function TermsAndConditions() {
               >
                 +91 9820434389
               </a>
-            </p>
+            </p> */}
             <p>
               <strong className="text-blue-800">Address:</strong> Guardian
               Assessment Private Limited, 812, B Wing, Samartha Aishwarya,
