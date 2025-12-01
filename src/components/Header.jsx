@@ -76,7 +76,7 @@ export default function Header() {
                 <img
                   src="/images/logo.avif"
                   className="w-full h-16 lg:h-18 object-cover"
-                  alt=""
+                  alt="guardian assessment logo"
                 />
               </div>
             </div>
