@@ -167,7 +167,6 @@ export default function HeroSection() {
               <input
                 type="text"
                 name="company"
-                required
                 value={formData.company}
                 onChange={handleChange}
                 placeholder="Company Name (optional)"
