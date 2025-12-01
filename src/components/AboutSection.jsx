@@ -9,7 +9,7 @@ export default function AboutSection() {
     '5 years of Experience In ISO Certification',
     'Best Service Guaranteed',
     '100% Money Back Guarantee',
-    'Our Certificate valid in Govt. Tender, Nationally & Internationally',
+    'Our Certificate valid in Govt. Tender, Nationally & Internationally'
     '100% Secure Customer Privacy & Data Protection System',
     'No Hidden Costs'
   ];
@@ -125,7 +125,7 @@ export default function AboutSection() {
                 href="#contact"
                 className="inline-block bg-blue-900 text-white px-8 py-3 rounded-md hover:bg-blue-800 transition-colors font-semibold shadow-lg hover:shadow-xl"
               >
-                Learn More About Us
+                Get Quote Now
               </a>
             </div>
           </div>
