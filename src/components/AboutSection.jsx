@@ -9,7 +9,7 @@ export default function AboutSection() {
     '5 years of Experience In ISO Certification',
     'Best Service Guaranteed',
     '100% Money Back Guarantee',
-    'Our Certificate valid in Govt. Tender, Nationally & Internationally'
+    'Our Certificate valid in Govt. Tender, Nationally & Internationally',
     '100% Secure Customer Privacy & Data Protection System',
     'No Hidden Costs'
   ];
